@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>35</title>
+  </head>
+  <body>
+    <h1>Countdown Timer</h1>
+    <div id="timer">--:--</div>
+
+    <script>
+      const timerElement = document.getElementById("timer");
+
+      let countDownSeconds = 60;
+
+      function updateDisplay() {
+        const minutes = Math.floor(countDownSeconds / 60);
+        const seconds = countDownSeconds % 60;
+
+        const formattedTime = `${minutes.toString().padStart(2, "0")}:${seconds
+          .toString()
+          .padStart(2, "0")}`;
+        timerElement.textContent = formattedTime;
+      }
+
+      function countDown() {
+        if (countDownSeconds > 0) {
+          countDownSeconds--;
+          updateDisplay();
+        } else {
+          clearInterval(timeInterval);
+          alert("Countdown Completed");
+        }
+      }
+      const timeInterval = setInterval(countDown, 1000);
+    </script>
+  </body>
+</html>

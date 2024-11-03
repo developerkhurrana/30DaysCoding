@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>30</title>
+  </head>
+  <body>
+    <div id="gallery"></div>
+    <script>
+      function createImage(src) {
+        let img = document.createElement("img");
+        img.src = src;
+        return img;
+      }
+      let gallery = document.getElementById("gallery");
+      let imageUrls = [
+        "./images/1.jpeg",
+        "./images/2.webp",
+        "./images/3.jpeg",
+        "./images/4.avif",
+        "./images/5.avif",
+        "./images/6.avif",
+        "./images/7.avif",
+      ];
+      imageUrls.forEach((url) => gallery.appendChild(createImage(url)));
+    </script>
+  </body>
+</html>

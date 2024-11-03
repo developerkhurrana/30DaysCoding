@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>30DaysCoding</title>
+  </head>
+  <body>
+    <div id="imageContainer"></div>
+    <script>
+      async function loadImage(src) {
+        return new Promise((resolve, reject) => {
+          let img = new Image(500, 500);
+          img.onload = function () {
+            resolve(img);
+          };
+          img.onerror = function () {
+            reject(new er("Failed to Load Image" + src));
+          };
+          img.src = src;
+        });
+      }
+      async function loadImages() {
+        let imageContainer = document.getElementById("imageContainer");
+        let imageUrls = [
+          "./images/1.jpeg",
+          "./images/2.webp",
+          "./images/3.jpeg",
+          "./images/4.avif",
+          "./images/5.avif",
+          "./images/6.avif",
+          "./images/7.avif",
+        ];
+        try {
+          const image = await Promise.all(imageUrls.map(loadImage));
+          image.forEach((image) => imageContainer.appendChild(image));
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      loadImages();
+    </script>
+  </body>
+</html>
